@@ -1,7 +1,7 @@
 import os
 import urllib3
 
-w = urllib3.urlopen('URL GOES HERE')
+w = urllib3.urlopen('https://raw.githubusercontent.com/schlaBAM/TankBot/master/tankbot.py')
 code = w.read()
 w.close()
 

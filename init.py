@@ -1,7 +1,8 @@
 import os
 import urllib3
 
-w = urllib3.urlopen('https://raw.githubusercontent.com/schlaBAM/TankBot/master/tankbot.py')
+http = urllib3.PoolManager()
+w = http.request('GET', 'http://canucks.nhl.com/club/standings.htm?type=LEA')
 code = w.read()
 w.close()
 
@@ -27,4 +28,4 @@ else:
     f.write(code)
     f.close()
 
-exec('tankbot.py')
+exec(open("tankbot.py").read())

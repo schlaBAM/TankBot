@@ -1,5 +1,5 @@
 import urllib3
-import html.parser
+import time
 import praw
 from bs4 import BeautifulSoup
 import time
@@ -36,7 +36,8 @@ class TankBot(object):
     @staticmethod
     def generate_tables(tank_list):
 
-        standings = "\n|Team|GP|W|L|OTL|PTS|L10|"
+        standings = "\nLast Updated: " + time.strftime("%b %d %Y %I:%M:%S", time.localtime()) + " PST\n"
+        standings += "\n|Team|GP|W|L|OTL|PTS|L10|"
         standings += "\n|:--:|:--:|:--:|:--:|:--:|:--:|:--:|"
 
         for i in range(20, 31):
@@ -47,7 +48,6 @@ class TankBot(object):
 
     def create_sidebar(self):
         # To fix character glitch when grabbing the sidebar
-        # h = HTMLParser.HTMLParser()
         # Initialize PRAW and login
         r = praw.Reddit(user_agent='HocketBotS v1.1 by TeroTheTerror')
         r.login(self.username, self.password)
@@ -57,8 +57,6 @@ class TankBot(object):
         sidebar_list = sidebar.split('***')
         # Sidebar with updated tables - +lucky_guess+sidebar_list[6]
         sidebar = (sidebar_list[0] + step1 + sidebar_list[2])
-        # Fix characters in sidebar
-        # sidebar = h.unescape(sidebar)
 
         return sidebar
 

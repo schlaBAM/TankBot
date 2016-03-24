@@ -49,7 +49,7 @@ class TankBot(object):
     def create_sidebar(self):
         # To fix character glitch when grabbing the sidebar
         # Initialize PRAW and login
-        r = praw.Reddit(user_agent='HocketBotS v1.1 by TeroTheTerror')
+        r = praw.Reddit(user_agent='TankBot 1.0 by /u/schlaBAM')
         r.login(self.username, self.password)
         # Grab the sidebar template from the wiki
         sidebar = r.get_subreddit(self.subreddit).get_wiki_page('edit_sidebar').content_md
